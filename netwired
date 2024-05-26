@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo systemctl start systemd-networkd
+sudo systemctl start systemd-resolved
