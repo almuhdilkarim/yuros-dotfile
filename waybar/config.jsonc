@@ -7,34 +7,35 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-         "hyprland/window"
         //"sway/workspaces",
         //"sway/mode",
-        //"hyprland/mode",
         //"sway/scratchpad",
-        //"hyprland/scratchpad",
+        //"custom/media"
+        "hyprland/window"
     ],
     "modules-center": [
-        "custom/media",
+        //"sway/window"
+        "mpd",
         "hyprland/workspaces",
         "clock"
     ],
     "modules-right": [
-        "mpd",
+        //"mpd",
+        //"idle_inhibitor",
         "pulseaudio",
+        // "network",
+        //"power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
-        "backlight",
+        // "backlight",
         //"keyboard-state",
         //"sway/language",
         //"battery",
         //"battery#bat2",
-        //"tray",
-        "network",
-        "power-profiles-daemon",
-        "idle_inhibitor",
-        "custom/power"
+        //"clock",
+        //"tray"
+        "network"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -73,21 +74,21 @@
         "tooltip-format": "{app}: {title}"
     },
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}%",
+        "format-disconnected": "",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
         "interval": 5,
         "consume-icons": {
             "on": " "
         },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
+        //"random-icons": {
+        //    "off": "<span color=\"#f53c3c\"></span> ",
+        //    "on": " "
+        //},
+        //"repeat-icons": {
+        //    "on": " "
+        //},
         "single-icons": {
             "on": "1 "
         },
@@ -96,7 +97,8 @@
             "playing": ""
         },
         "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "mpc toggle"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -110,7 +112,7 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "Asia/Jakarta",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -166,10 +168,10 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "",
-        "tooltip-format": "{ifname} | {ipaddr}/{cidr} | via {gwaddr} ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "⚠",
+        "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
@@ -191,11 +193,6 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/power": {
-        "format": " ⏻ ",
-        "tooltip": false,
-        "on-click": "wlogout --protocol layer-shell"
-    },  
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -205,7 +202,8 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Script in resources folder
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }
+    
